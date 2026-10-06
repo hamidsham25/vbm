@@ -7,3 +7,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+
+## Projekt
+Onepage-Demo für VB Medienkonzepte (Virgil Pietrar, 1:1 Coaching für Inhaber von Gebäudereinigungen).
+Alle Inhalte, Texte und Bild-URLs stehen in docs/briefing.md. Keine Texte erfinden.
+Ansprache: durchgehend Du.
+Stack: Next.js, TypeScript, Tailwind, Motion.
+Für Designaufgaben den frontend-design Skill nutzen.
