@@ -98,19 +98,19 @@ export default function Hero() {
           <header className="pointer-events-none fixed inset-x-0 top-0 z-40 bg-transparent px-5 pt-5 mix-blend-difference md:px-8 md:pt-7">
             <nav className="pointer-events-auto grid grid-cols-[1fr_auto] items-start gap-x-4 bg-transparent md:grid-cols-3">
               <div className="hidden min-w-0 font-grotesk text-white md:block">
-                <p className="text-[0.9rem] leading-tight tracking-wide">
+                <p className="text-[1.05rem] leading-tight tracking-wide">
                   Gebäudereinigermeister &amp; Unternehmer
                 </p>
-                <p className="mt-1 text-[0.62rem] uppercase tracking-[0.18em] text-white/55">
+                <p className="mt-1 text-[0.72rem] uppercase tracking-[0.18em] text-white/55">
                   1:1 Begleitung für Gebäudereiniger
                 </p>
               </div>
 
-              <p className="justify-self-start font-grotesk text-[0.9rem] font-semibold uppercase tracking-[0.2em] text-white md:justify-self-center md:text-[1rem]">
+              <p className="justify-self-start font-grotesk text-[1.05rem] font-semibold uppercase tracking-[0.2em] text-white md:justify-self-center md:text-[1.15rem]">
                 Virgil Pietrar
               </p>
 
-              <div className="flex items-center justify-end gap-5 font-grotesk text-[0.9rem] text-white md:gap-7">
+              <div className="flex items-center justify-end gap-5 font-grotesk text-[1.05rem] text-white md:gap-7">
                 <a
                   href="#begleitung"
                   className="hidden transition-opacity hover:opacity-60 md:inline"
@@ -139,7 +139,7 @@ export default function Hero() {
             </nav>
 
             {menuOpen && (
-              <div className="pointer-events-auto mt-4 flex flex-col gap-3 border-t border-white/15 bg-transparent pt-4 font-grotesk text-sm text-white md:hidden">
+              <div className="pointer-events-auto mt-4 flex flex-col gap-3 border-t border-white/15 bg-transparent pt-4 font-grotesk text-[1.05rem] text-white md:hidden">
                 <a
                   href="#begleitung"
                   onClick={() => setMenuOpen(false)}
@@ -158,72 +158,64 @@ export default function Hero() {
             )}
           </header>
 
-          {/*
-            Bottom stack: headline sets width; portrait is exactly that wide
-            and sits flush above it. Text (z-10) scrolls up behind image (z-20).
-          */}
-          <div className="absolute inset-x-0 bottom-0 flex justify-center px-2 md:px-4">
-            <div className="relative w-max max-w-full">
-              {/* Portrait — same width as text, directly above */}
-              <div className="absolute bottom-full left-0 right-0 z-20 h-[min(48vh,440px)] overflow-hidden bg-[var(--ink)] md:h-[min(52vh,500px)]">
-                <motion.div
-                  className="relative h-full w-full"
-                  initial={reduceMotion ? false : { opacity: 0, scale: 1.04 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 1.25,
-                    delay: 0.12,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                >
-                  <Image
-                    src="/virgil-hero.jpg"
-                    alt="Virgil Pietrar"
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 95vw, 70vw"
-                    className="object-cover object-[center_18%] [filter:grayscale(1)]"
-                  />
-                </motion.div>
-              </div>
+          {/* Headline 1 — bottom; scrolls up behind portrait with light blur */}
+          <motion.div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-2 will-change-transform md:px-3"
+            style={
+              reduceMotion
+                ? { opacity: 0, y: "-58vh", filter: "blur(9px)" }
+                : { opacity: h1Opacity, y: h1Y, filter: h1Filter }
+            }
+          >
+            <h1 className="font-grotesk text-center text-[clamp(2.2rem,9.5vw,6.5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.02em] text-white">
+              <span className="block whitespace-nowrap">
+                <MaskedWord
+                  word={HEADLINE_1_WORDS[0]}
+                  index={0}
+                  reduceMotion={reduceMotion}
+                />{" "}
+                <MaskedWord
+                  word={HEADLINE_1_WORDS[1]}
+                  index={1}
+                  reduceMotion={reduceMotion}
+                />{" "}
+                <MaskedWord
+                  word={HEADLINE_1_WORDS[2]}
+                  index={2}
+                  reduceMotion={reduceMotion}
+                />
+              </span>
+              <span className="block whitespace-nowrap">
+                <MaskedWord
+                  word={HEADLINE_1_WORDS[3]}
+                  index={3}
+                  reduceMotion={reduceMotion}
+                />
+              </span>
+            </h1>
+          </motion.div>
 
-              {/* Headline 1 — defines stack width; moves behind photo on scroll */}
-              <motion.div
-                className="pointer-events-none relative z-10 will-change-transform"
-                style={
-                  reduceMotion
-                    ? { opacity: 0, y: "-85%", filter: "blur(16px)" }
-                    : { opacity: h1Opacity, y: h1Y, filter: h1Filter }
-                }
-              >
-                <h1 className="font-grotesk text-center text-[clamp(2.2rem,9.5vw,6.5rem)] font-semibold uppercase leading-[0.9] tracking-[-0.02em] text-white">
-                  <span className="block whitespace-nowrap">
-                    <MaskedWord
-                      word={HEADLINE_1_WORDS[0]}
-                      index={0}
-                      reduceMotion={reduceMotion}
-                    />{" "}
-                    <MaskedWord
-                      word={HEADLINE_1_WORDS[1]}
-                      index={1}
-                      reduceMotion={reduceMotion}
-                    />{" "}
-                    <MaskedWord
-                      word={HEADLINE_1_WORDS[2]}
-                      index={2}
-                      reduceMotion={reduceMotion}
-                    />
-                  </span>
-                  <span className="block whitespace-nowrap">
-                    <MaskedWord
-                      word={HEADLINE_1_WORDS[3]}
-                      index={3}
-                      reduceMotion={reduceMotion}
-                    />
-                  </span>
-                </h1>
-              </motion.div>
-            </div>
+          {/* Portrait — hochkant, schmaler, etwas höher */}
+          <div className="absolute inset-x-0 top-[16%] z-20 flex justify-center px-4 md:top-[14%]">
+            <motion.div
+              className="relative aspect-[2/3] h-[min(52vh,460px)] w-auto overflow-hidden bg-[var(--ink)] md:h-[min(56vh,520px)]"
+              initial={reduceMotion ? false : { opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 1.25,
+                delay: 0.12,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <Image
+                src="/virgil-hero.jpg"
+                alt="Virgil Pietrar"
+                fill
+                priority
+                sizes="(max-width: 768px) 50vw, 30vw"
+                className="object-cover object-[center_18%] [filter:grayscale(1)]"
+              />
+            </motion.div>
           </div>
 
           {/* Headline 2 + Subline — in front of portrait */}
